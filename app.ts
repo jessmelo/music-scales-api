@@ -3,7 +3,7 @@ import { scalesRouter } from "./src/routes/scalesRouter";
 
 const express = require("express");
 const app = express();
-const port = 3060;
+const port = process.env.PORT || 3060;
 
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
