@@ -8,6 +8,8 @@ const port = process.env.PORT || 3060;
 const swaggerJSDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
+const apiUrl = process.env.API_URL || `http://localhost:${port}`;
+
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
@@ -15,13 +17,20 @@ const swaggerDefinition = {
     version: "1.0.0",
     description: "This is a REST API application made with Express.",
   },
-  servers: [
-    {
-      url: `http://localhost:${port}`,
-      description: "Local server",
-    },
-  ],
+  servers: [] as { url: string; description: string }[],
 };
+
+if (process.env.NODE_ENV !== "production") {
+  swaggerDefinition.servers.push({
+    url: `http://localhost:${port}`,
+    description: "Local Server",
+  });
+}
+
+swaggerDefinition.servers.push({
+  url: apiUrl,
+  description: "Production Server",
+});
 
 const options = {
   swaggerDefinition,
