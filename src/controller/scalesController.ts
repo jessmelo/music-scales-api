@@ -1,3 +1,4 @@
+import { musicalNotes } from "../data/musicalNotes";
 import { ScalesService } from "../services/scalesService";
 import { Request, Response } from "express";
 
@@ -12,19 +13,63 @@ export class ScalesController {
     res.status(200).json(scaleData);
   }
 
-  async getModes(req: Request, res: Response) {
-    const modes = {
-      modes: [
-        { name: "Ionian", notes: ["1", "2", "3", "4", "5", "6", "7"] },
-        { name: "Dorian", notes: ["1", "2", "b3", "4", "5", "6", "b7"] },
-        { name: "Phrygian", notes: ["1", "b2", "b3", "4", "5", "b6", "b7"] },
-        { name: "Lydian", notes: ["1", "2", "3", "#4", "5", "6", "7"] },
-        { name: "Mixolydian", notes: ["1", "2", "3", "4", "5", "6", "b7"] },
-        { name: "Aeolian", notes: ["1", "2", "b3", "4", "5", "b6", "b7"] },
-        { name: "Locrian", notes: ["1", "b2", "b3", "4", "b5", "b6", "b7"] },
-      ],
-    };
+  async getMajorScale(req: Request, res: Response) {
+    try {
+      const { key } = req.params;
+      if (!key) res.status(400).json({ error: "Key is required" });
 
-    res.status(200).json(modes);
+      const upperCaseKey = key.toUpperCase();
+      if (!musicalNotes.includes(upperCaseKey))
+        res.status(400).json({ error: "Key is not valid" });
+
+      const scaleData = await this.scalesService.getMajorScale(upperCaseKey);
+      res.status(200).json({
+        scale: scaleData,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Error fetching major scale." });
+    }
+  }
+
+  async getMinorScale(req: Request, res: Response) {
+    const { key } = req.params;
+    if (!key) res.status(400).json({ error: "Key is required" });
+
+    const upperCaseKey = key.toUpperCase();
+    if (!musicalNotes.includes(upperCaseKey))
+      res.status(400).json({ error: "Key is not valid" });
+
+    const scaleData = await this.scalesService.getMinorScale(upperCaseKey);
+    res.status(200).json(scaleData);
+  }
+
+  async getModes(req: Request, res: Response) {
+    try {
+      const modes = {
+        modes: [
+          { name: "Ionian", template: ["1", "2", "3", "4", "5", "6", "7"] },
+          { name: "Dorian", template: ["1", "2", "b3", "4", "5", "6", "b7"] },
+          {
+            name: "Phrygian",
+            template: ["1", "b2", "b3", "4", "5", "b6", "b7"],
+          },
+          { name: "Lydian", template: ["1", "2", "3", "#4", "5", "6", "7"] },
+          {
+            name: "Mixolydian",
+            template: ["1", "2", "3", "4", "5", "6", "b7"],
+          },
+          { name: "Aeolian", template: ["1", "2", "b3", "4", "5", "b6", "b7"] },
+          {
+            name: "Locrian",
+            template: ["1", "b2", "b3", "4", "b5", "b6", "b7"],
+          },
+        ],
+      };
+
+      res.status(200).json(modes);
+    } catch (error) {
+      res.status(500).json({ error: "Error fetching modes." });
+    }
   }
 }
