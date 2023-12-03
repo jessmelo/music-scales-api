@@ -1,6 +1,1 @@
-export class HarmonyController {
-  @Get("/harmony")
-  harmony() {
-    return "harmony";
-  }
-}
+export class HarmonyController {}
