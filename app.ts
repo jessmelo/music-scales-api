@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { scalesRouter } from "./src/routes/scalesRouter";
 
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const port = process.env.PORT || 3060;
