@@ -7,7 +7,7 @@
     "test": "test",
     "start": "node build/app.js",
     "dev": "nodemon app.ts",
-    "build": "npm install && tsc --build"
+    "build": "tsc --build"
   },
   "author": "jéssica melo",
   "license": "ISC",
