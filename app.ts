@@ -49,6 +49,6 @@ app.get("/", (req: Request, res: Response) => {
 app.use(scalesRouter);
 
 app.listen(port, () => {
-  console.log(`Example app listening on http://localhost:${port}`);
+  console.log(`Server listening on http://localhost:${port}`);
   console.log(`Swagger API Docs on http://localhost:${port}/api-docs`);
 });
