@@ -5,6 +5,7 @@
       "sourceMap": true,
       "outDir": "build",
       "typeRoots": ["node_modules/@types"],
+      "moduleResolution": "Node",
     }
 }
   
