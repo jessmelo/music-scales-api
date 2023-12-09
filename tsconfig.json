@@ -4,6 +4,7 @@
       "module": "CommonJS",
       "sourceMap": true,
       "outDir": "build",
+      "types": ["node"]
     }
 }
   
