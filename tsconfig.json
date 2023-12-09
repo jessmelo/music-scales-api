@@ -8,7 +8,7 @@
       "lib": ["es2016", "dom"],
       "moduleResolution": "Node10",
     },
-    "include": ["src/**/*"],
+    "include": ["src/**/*", "app.ts"],
     "exclude": ["node_modules", "**/*.spec.ts"]
 }
   
