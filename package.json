@@ -7,7 +7,7 @@
     "test": "test",
     "start": "node build/app.js",
     "dev": "nodemon app.ts",
-    "build": "npm install && npm install -g typescript && npm install -D @types/node && tsc --build"
+    "build": "npm install && npm install -g typescript && npm i --save-dev @types/node && tsc --build"
   },
   "author": "jéssica melo",
   "license": "ISC",
