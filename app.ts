@@ -1,13 +1,16 @@
 import { Request, Response } from "express";
 import { scalesRouter } from "./src/routes/scalesRouter";
 
-require("dotenv").config();
-const express = require("express");
+import * as dotenv from "dotenv";
+import * as express from "express";
+
+dotenv.config();
+
 const app = express();
 const port = process.env.PORT || 3060;
 
-const swaggerJSDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
+import * as swaggerUi from "swagger-ui-express";
+import * as swaggerJSDoc from "swagger-jsdoc";
 
 const apiUrl = process.env.API_URL || `http://localhost:${port}`;
 
