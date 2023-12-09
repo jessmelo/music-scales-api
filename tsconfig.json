@@ -5,8 +5,7 @@
       "sourceMap": true,
       "outDir": "build",
       "typeRoots": ["node_modules/@types"],
-      "lib": ["es2016", "dom"],
-      "moduleResolution": "Node10",
+      "lib": ["es2016", "dom"]
     },
     "include": ["src/**/*", "app.ts"],
     "exclude": ["node_modules", "**/*.spec.ts"]
