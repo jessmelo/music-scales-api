@@ -1,79 +1,64 @@
-export const chromaticScale: { [key: string]: number } = {
-  C: 0,
-  Db: 1,
-  D: 2,
-  Eb: 3,
-  E: 4,
-  F: 5,
-  Gb: 6,
-  G: 7,
-  Ab: 8,
-  A: 9,
-  Bb: 10,
-  B: 11,
-};
-
-export const chromaticScaleSharps: { [key: string]: number } = {
-  C: 0,
-  "C#": 1,
-  D: 2,
-  "D#": 3,
-  E: 4,
-  F: 5,
-  "F#": 6,
-  G: 7,
-  "G#": 8,
-  A: 9,
-  "A#": 10,
-  B: 11,
-};
-
-export const chromaticScaleWithSharps: { [key: number]: string } = {
-  1: "C",
-  2: "C#",
-  3: "D",
-  4: "D#",
-  5: "E",
-  6: "F",
-  7: "F#",
-  8: "G",
-  9: "G#",
-  10: "A",
-  11: "A#",
-  12: "B",
-};
-
-export const chromaticScaleWithFlats: { [key: number]: string } = {
-  1: "C",
-  2: "Db",
-  3: "D",
-  4: "Eb",
-  5: "E",
-  6: "F",
-  7: "Gb",
-  8: "G",
-  9: "Ab",
-  10: "A",
-  11: "Bb",
-  12: "B",
-};
-
-export const musicalNotes = [
+export const chromaticScaleAll = [
   "C",
   "C#",
-  "DB",
+  "Db",
   "D",
   "D#",
-  "EB",
+  "Eb",
   "E",
   "F",
   "F#",
-  "GB",
+  "Gb",
   "G",
   "G#",
-  "AB",
+  "Ab",
   "A",
   "A#",
-  "BB",
+  "Bb",
+  "B",
+  "Cb",
+];
+
+export const chromaticScaleSharps: string[] = [
+  "C",
+  "C#",
+  "D",
+  "D#",
+  "E",
+  "F",
+  "F#",
+  "G",
+  "G#",
+  "A",
+  "A#",
   "B",
 ];
+
+export const chromaticScaleFlats: string[] = [
+  "C",
+  "Db",
+  "D",
+  "Eb",
+  "E",
+  "F",
+  "Gb",
+  "G",
+  "Ab",
+  "A",
+  "Bb",
+  "B",
+];
+
+export const enharmonics: { [key: string]: string } = {
+  Db: "C#",
+  Eb: "D#",
+  Gb: "F#",
+  Ab: "G#",
+  Bb: "A#",
+  "E#": "F",
+  "B#": "C",
+  Cb: "B",
+  Fb: "E",
+};
+
+export const musicalNotes = ["C", "D", "E", "F", "G", "A", "B"];

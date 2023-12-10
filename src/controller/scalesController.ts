@@ -1,4 +1,4 @@
-import { musicalNotes } from "../data/musicalNotes";
+import { chromaticScaleAll, musicalNotes } from "../data/musicalNotes";
 import { ScalesService } from "../services/scalesService";
 import { Request, Response } from "express";
 
@@ -16,13 +16,13 @@ export class ScalesController {
   async getMajorScale(req: Request, res: Response) {
     try {
       const { key } = req.params;
+
       if (!key) res.status(400).json({ error: "Key is required" });
 
-      const upperCaseKey = key.toUpperCase();
-      if (!musicalNotes.includes(upperCaseKey))
+      if (key.length > 2 || !chromaticScaleAll.includes(key))
         res.status(400).json({ error: "Key is not valid" });
 
-      const scaleData = await this.scalesService.getMajorScale(upperCaseKey);
+      const scaleData = await this.scalesService.getMajorScale(key);
       res.status(200).json({
         scale: scaleData,
       });
@@ -33,15 +33,22 @@ export class ScalesController {
   }
 
   async getMinorScale(req: Request, res: Response) {
-    const { key } = req.params;
-    if (!key) res.status(400).json({ error: "Key is required" });
+    try {
+      const { key } = req.params;
 
-    const upperCaseKey = key.toUpperCase();
-    if (!musicalNotes.includes(upperCaseKey))
-      res.status(400).json({ error: "Key is not valid" });
+      if (!key) res.status(400).json({ error: "Key is required" });
 
-    const scaleData = await this.scalesService.getMinorScale(upperCaseKey);
-    res.status(200).json(scaleData);
+      if (key.length > 2 || !chromaticScaleAll.includes(key))
+        res.status(400).json({ error: "Key is not valid" });
+
+      const scaleData = await this.scalesService.getMinorScale(key);
+      res.status(200).json({
+        scale: scaleData,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: "Error fetching minor scale." });
+    }
   }
 
   async getModes(req: Request, res: Response) {

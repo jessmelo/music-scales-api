@@ -1,19 +1,2 @@
-export const majorScale: { [key: number]: number } = {
-  1: 2,
-  2: 2,
-  3: 1,
-  4: 2,
-  5: 2,
-  6: 2,
-  7: 1,
-};
-
-export const minorScale: { [key: number]: number } = {
-  1: 2,
-  2: 1,
-  3: 2,
-  4: 2,
-  5: 1,
-  6: 2,
-  7: 2,
-};
+export const majorScaleSteps: number[] = [2, 2, 1, 2, 2, 2, 1]; // Whole, whole, half, whole, whole, whole, half steps
+export const minorScaleSteps: number[] = [2, 1, 2, 2, 1, 2, 2]; // Whole, half, whole, whole, half, whole, whole steps
